@@ -27,7 +27,7 @@ namespace Visitor_Placement_Tools_For_Events
             Visitor elder = new Visitor();
             foreach (var item in group.Visitors)
             {
-                if (item.CheckAgeIsAbove12(StartDate) == false)
+                if (item.IsChild(StartDate) == false)
                 {
                     templistwithchildrenand1elder.Add(item);
                 }

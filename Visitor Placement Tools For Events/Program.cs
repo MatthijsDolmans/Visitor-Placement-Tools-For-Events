@@ -1,39 +1,47 @@
 ﻿using Visitor_Placement_Tools_For_Events.Enums;
 using Visitor_Placement_Tools_For_Events;
+using System;
 
 int maxcap = 4;
 int test = 0;
 Organiser organiser = new Organiser();
-List<Visitor> totalvisitors = new List<Visitor>();
 List<Visitor> templist = new List<Visitor>();
-Visitor visitor1 = new Visitor(new DateTime(2015, 2, 22), "matthijs" + 6);
 Random r = new Random();
-
+Visitor visitor1 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "brimstone");
+Visitor visitor2 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "viper");
+Visitor visitor3 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "kayo");
+Visitor visitor4 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "omen");
+Visitor visitor5 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "skye"); 
+Visitor visitor6 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "astra"); 
+Visitor visitor7 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "neon");
+Visitor visitor8 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "jett");
+Visitor visitor9 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "Reyna");
+Visitor visitor10 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "chamber");
+Visitor visitor11 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "phoenix");
+Visitor visitor12 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "yoru");
 
 Section section = new Section(SectionLetterEnum.SectionLetter.A, 2);
 organiser.CreateEvent(DateTime.Now, maxcap);
 
-for (int i = 0; i < maxcap; i++)
-{
 
-    int Year = r.Next(1900, 2022);
-    int Month = r.Next(1, 12);
-    int Day = r.Next(1, 29);
+Group group1 = new Group();
+Group group2 = new Group();
+Group group3 = new Group();
 
-    totalvisitors.Add(new Visitor(new DateTime(Year, Month, Day), "matthijs" + i));
+group1.AddPeopleToGroup(visitor1);
+group1.AddPeopleToGroup(visitor2);
+group1.AddPeopleToGroup(visitor3);
+group1.AddPeopleToGroup(visitor4);
 
-    //Console.WriteLine(totalvisitors[i].DateOfBirth.ToString("dd/MM/yyyy")+" "+ totalvisitors[i].Name + " "+ totalvisitors[i].VisitorId);
-}
-totalvisitors.Add(visitor1);
-for (int i = 0; i < 5; i++)
-{
-    templist.Add(totalvisitors[0]);
-    totalvisitors.RemoveAt(0);
-}
+group2.AddPeopleToGroup(visitor5);
+group2.AddPeopleToGroup(visitor6);
+group2.AddPeopleToGroup(visitor7);
 
-Group group1 = new Group(templist);
-
-
+group3.AddPeopleToGroup(visitor8);
+group3.AddPeopleToGroup(visitor9);
+group3.AddPeopleToGroup(visitor10);
+group3.AddPeopleToGroup(visitor11);
+group3.AddPeopleToGroup(visitor12);
 
 foreach (var item in organiser.Events)
 {

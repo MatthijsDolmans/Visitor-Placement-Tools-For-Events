@@ -13,11 +13,15 @@ namespace Visitor_Placement_Tools_For_Events
 
         private static int id;
 
-        public Group(List<Visitor> visitorsingroup)
+        public Group()
         {
-            Visitors = visitorsingroup;
+            Visitors = new List<Visitor>();
             id++;
             GroupId = id;
+        }
+        public void AddPeopleToGroup(Visitor visitor)
+        {
+            Visitors.Add(visitor);
         }
     }
 }

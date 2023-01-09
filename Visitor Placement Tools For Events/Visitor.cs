@@ -32,36 +32,16 @@ namespace Visitor_Placement_Tools_For_Events
             LastVisitorId++;
             return LastVisitorId;
         }
-
-        public bool CheckAgeIsAbove12(DateTime eventdate)
-        {
-            int yearage = eventdate.Year - DateOfBirth.Year;
-            int monthage = eventdate.Month - DateOfBirth.Month;
-            int dayage = eventdate.Day - DateOfBirth.Day;
-
-            if (yearage >= 12)
+        //casper
+        
+            public bool IsChild(DateTime eventDate)
             {
-                return true;
-            }
-            else if (yearage == 11)
-            {
-                if (monthage > 0)
+                if (DateOfBirth > eventDate.Date.AddYears(-12))
                 {
                     return true;
                 }
-                else if (monthage == 0 && dayage >= 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
+                else return false;
             }
-            else
-            {
-                return false;
-            }
+
         }
     }
-}
