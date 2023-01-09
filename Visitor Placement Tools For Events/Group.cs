@@ -8,7 +8,7 @@ namespace Visitor_Placement_Tools_For_Events
 {
     public class Group
     {
-        public List<Visitor> Visitors { get; private set; }
+        public List<Visitor> Visitors { get;  private set; }
         public int GroupId { get; private set; }
 
         private static int id;
@@ -19,6 +19,7 @@ namespace Visitor_Placement_Tools_For_Events
             id++;
             GroupId = id;
         }
+
         public void AddPeopleToGroup(Visitor visitor)
         {
             Visitors.Add(visitor);

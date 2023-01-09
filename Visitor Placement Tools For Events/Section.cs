@@ -17,11 +17,9 @@ namespace Visitor_Placement_Tools_For_Events
             Name = name;
             Rows = new List<Row>();
             MaxRows = Maxrows;
-            Random r = new Random();
-            int seats = r.Next(3, 10);
-            GenerateRows(seats);
+            GenerateRows();
         }
-        public List<Row> GenerateRows(int amountOfSeats)
+        public List<Row> GenerateRows()
         {
             for (int i = 1; i <= MaxRows; i++)
             {

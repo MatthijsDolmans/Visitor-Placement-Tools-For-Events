@@ -23,25 +23,20 @@ namespace Visitor_Placement_Tools_For_Events
             Name = name;
             VisitorId = NextId();
         }
-        public Visitor()
-        {
-
-        }
         public int NextId()
         {
             LastVisitorId++;
             return LastVisitorId;
         }
-        //casper
         
-            public bool IsChild(DateTime eventDate)
+        public bool IsChild(DateTime eventDate)
+        {
+            if (DateOfBirth > eventDate.Date.AddYears(-12))
             {
-                if (DateOfBirth > eventDate.Date.AddYears(-12))
-                {
-                    return true;
-                }
-                else return false;
+                return true;
             }
-
+            else return false;
         }
+
     }
+}

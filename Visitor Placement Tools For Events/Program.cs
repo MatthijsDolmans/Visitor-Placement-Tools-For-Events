@@ -2,11 +2,14 @@
 using Visitor_Placement_Tools_For_Events;
 using System;
 
-int maxcap = 4;
-int test = 0;
-Organiser organiser = new Organiser();
-List<Visitor> templist = new List<Visitor>();
+int maxcap = 12;
+
 Random r = new Random();
+Event event1 = new Event(DateTime.Now, maxcap);
+Section section = new Section(SectionLetterEnum.SectionLetter.A, 2);
+Section section1 = new Section(SectionLetterEnum.SectionLetter.B, 2);
+event1.AddSections(section);
+event1.AddSections(section1);
 Visitor visitor1 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "brimstone");
 Visitor visitor2 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "viper");
 Visitor visitor3 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "kayo");
@@ -20,14 +23,13 @@ Visitor visitor10 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), 
 Visitor visitor11 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "phoenix");
 Visitor visitor12 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "yoru");
 
-Section section = new Section(SectionLetterEnum.SectionLetter.A, 2);
-organiser.CreateEvent(DateTime.Now, maxcap);
+
+
 
 
 Group group1 = new Group();
 Group group2 = new Group();
 Group group3 = new Group();
-
 group1.AddPeopleToGroup(visitor1);
 group1.AddPeopleToGroup(visitor2);
 group1.AddPeopleToGroup(visitor3);
@@ -43,18 +45,15 @@ group3.AddPeopleToGroup(visitor10);
 group3.AddPeopleToGroup(visitor11);
 group3.AddPeopleToGroup(visitor12);
 
-foreach (var item in organiser.Events)
-{
-    item.AddSections(section);
-    organiser.Placeintogroups(group1);
-    foreach (var item1 in item.Sections)
+
+
+    foreach (var item1 in event1.Sections)
     {
-        Console.WriteLine("Section: " + item1.Name);
         foreach (var item2 in item1.Rows)
         {
             foreach (var item3 in item2.Seats)
             {
-                Console.WriteLine("place: " + item2.Number + "-" + item3.Number);
+                Console.WriteLine("Place: " + item3.SeatName);
                 if (item3.SeatedVisitor != null)
                 {
                     Console.WriteLine(item3.SeatedVisitor.Name + "Date of birth: " + item3.SeatedVisitor.DateOfBirth);
@@ -62,4 +61,3 @@ foreach (var item in organiser.Events)
             }
         }
     }
-}
