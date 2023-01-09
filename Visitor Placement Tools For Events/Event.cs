@@ -23,8 +23,45 @@ namespace Visitor_Placement_Tools_For_Events
 
         public void PlacePeople()
         {
-         
+            foreach(Group group in Groups)
+            {
+                if(group.HasChildInGroup() == true)
+                {
+                    PlaceGroupsWithChildren(group.Visitors);
+                }
+                else
+                {
+
+                }
+            }
         }
+
+        public void PlaceGroupsWithChildren(List<Visitor> visitors)
+        {
+            foreach( Visitor visitor in visitors)
+            {
+
+                foreach (var item in Sections)
+                {
+                    foreach (var item1 in item.Rows)
+                    {
+                        foreach (var item2 in item1.Seats)
+                        { 
+                            if (item2.SeatedVisitor == null)
+                            {
+                                item2.PlaceVisitor(visitor);
+                                break;
+                            }
+
+                        }
+                        break;
+                    }
+                    break;
+                }
+            }
+           
+        }
+
 
         public void AddSections(Section section)
         {

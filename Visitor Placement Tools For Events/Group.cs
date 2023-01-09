@@ -20,6 +20,17 @@ namespace Visitor_Placement_Tools_For_Events
             GroupId = id;
         }
 
+        public bool HasChildInGroup()
+        {
+            foreach(var visitor in Visitors)
+            {
+                if(visitor.Ischild == true)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public void AddPeopleToGroup(Visitor visitor)
         {
             Visitors.Add(visitor);

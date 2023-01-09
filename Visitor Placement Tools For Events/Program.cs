@@ -10,18 +10,19 @@ Section section = new Section(SectionLetterEnum.SectionLetter.A, 2);
 Section section1 = new Section(SectionLetterEnum.SectionLetter.B, 2);
 event1.AddSections(section);
 event1.AddSections(section1);
-Visitor visitor1 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "brimstone");
-Visitor visitor2 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "viper");
-Visitor visitor3 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "kayo");
-Visitor visitor4 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "omen");
-Visitor visitor5 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "skye"); 
-Visitor visitor6 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "astra"); 
-Visitor visitor7 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "neon");
-Visitor visitor8 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "jett");
-Visitor visitor9 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "Reyna");
-Visitor visitor10 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "chamber");
-Visitor visitor11 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "phoenix");
-Visitor visitor12 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "yoru");
+Visitor visitor1 = new Visitor(new DateTime(2014,1,10), "brimstone", event1); //kind
+Visitor visitor2 = new Visitor(new DateTime(r.Next(2014, 2022), r.Next(1, 12), r.Next(1, 29)), "viper", event1);
+Visitor visitor3 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "kayo", event1);
+Visitor visitor4 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "omen", event1);
+Visitor visitor5 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "skye", event1); 
+Visitor visitor6 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "astra", event1); 
+Visitor visitor7 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "neon", event1);
+Visitor visitor8 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "jett", event1);
+Visitor visitor9 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "Reyna", event1);
+Visitor visitor10 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "chamber", event1);
+Visitor visitor12 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "yoru", event1);
+Visitor visitor11 = new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "phoenix", event1);
+
 
 
 
@@ -45,8 +46,10 @@ group3.AddPeopleToGroup(visitor10);
 group3.AddPeopleToGroup(visitor11);
 group3.AddPeopleToGroup(visitor12);
 
-
-
+event1.Groups.Add(group1);
+event1.Groups.Add(group2);
+event1.Groups.Add(group3);
+event1.PlacePeople();
     foreach (var item1 in event1.Sections)
     {
         foreach (var item2 in item1.Rows)

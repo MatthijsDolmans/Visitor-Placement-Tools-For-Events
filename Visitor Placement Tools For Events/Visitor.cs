@@ -16,12 +16,13 @@ namespace Visitor_Placement_Tools_For_Events
 
         private static int LastVisitorId = 0;
 
-        public Visitor(DateTime dateOfBirth, string name)
+        public Visitor(DateTime dateOfBirth, string name, Event _event)
         {
             DateOfBirth = dateOfBirth;
             DateSignedUp = DateTime.Now;
             Name = name;
             VisitorId = NextId();
+            Ischild = IsChild(_event.StartDate);
         }
         public int NextId()
         {

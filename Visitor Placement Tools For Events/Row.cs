@@ -29,7 +29,7 @@ namespace Visitor_Placement_Tools_For_Events
     }
     public List<Seat> GenerateSeats(int amount)
     {
-        for (int i = 1; i < amount; i++)
+        for (int i = 1; i <= 3; i++)
         {
             Seat seat = new Seat(i, SectionLetter, Number);
             Seats.Add(seat);
