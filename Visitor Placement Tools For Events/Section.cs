@@ -28,5 +28,32 @@ namespace Visitor_Placement_Tools_For_Events
             }
             return Rows;
         }
+
+        public void SeatVisitorInRowSeat(List<Visitor> visitors)
+        {
+            foreach(Visitor visitor in visitors)
+            {
+                foreach (Row row in Rows)
+                {
+                    bool test = row.placeVisitor(visitor);
+                    if (test)
+                    {
+                        break;                      
+                    }
+                }
+            }
+        }
+
+        public bool IsSpace(int groupSize)
+        {
+            int freeSeats = 0;
+            foreach(Row row in Rows)
+            {
+                freeSeats += row.TotalSeatsFree(); 
+            }
+
+            if (freeSeats >= groupSize) return true;
+            else return false;
+        }
     }
 }

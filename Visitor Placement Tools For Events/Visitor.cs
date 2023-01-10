@@ -19,7 +19,7 @@ namespace Visitor_Placement_Tools_For_Events
         public Visitor(DateTime dateOfBirth, string name, Event _event)
         {
             DateOfBirth = dateOfBirth;
-            DateSignedUp = DateTime.Now;
+            DateSignedUp = RandomSignUpDate();
             Name = name;
             VisitorId = NextId();
             Ischild = IsChild(_event.StartDate);
@@ -39,5 +39,19 @@ namespace Visitor_Placement_Tools_For_Events
             else return false;
         }
 
+        #region Formatting
+
+        public override string ToString()
+        {
+            return $"{Name}";
+        }
+
+        private DateTime RandomSignUpDate()
+        {
+            Random r = new Random();
+            DateTime signedUp = new DateTime(r.Next(2014, 2023), r.Next(1, 13), r.Next(1, 29), r.Next(1, 24), r.Next(1, 60), r.Next(1, 60));
+            return signedUp;
+        }
+        #endregion
     }
 }

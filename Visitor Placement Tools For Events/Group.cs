@@ -13,9 +13,9 @@ namespace Visitor_Placement_Tools_For_Events
 
         private static int id;
 
-        public Group()
+        public Group(List<Visitor> list)
         {
-            Visitors = new List<Visitor>();
+            Visitors = list;
             id++;
             GroupId = id;
         }

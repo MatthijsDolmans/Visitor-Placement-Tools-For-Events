@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visitor Placement Tools For Events", "Visitor Placement Tools For Events\Visitor Placement Tools For Events.csproj", "{4ED792BD-11CE-49B2-B30D-64C37956EDD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Visitor Placement Tools For Events", "Visitor Placement Tools For Events\Visitor Placement Tools For Events.csproj", "{4ED792BD-11CE-49B2-B30D-64C37956EDD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VPTE.Test", "VPTE.Test\VPTE.Test.csproj", "{07F7EDF5-494E-4D56-A6ED-5A1565ADDE6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4ED792BD-11CE-49B2-B30D-64C37956EDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ED792BD-11CE-49B2-B30D-64C37956EDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ED792BD-11CE-49B2-B30D-64C37956EDD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07F7EDF5-494E-4D56-A6ED-5A1565ADDE6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07F7EDF5-494E-4D56-A6ED-5A1565ADDE6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07F7EDF5-494E-4D56-A6ED-5A1565ADDE6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07F7EDF5-494E-4D56-A6ED-5A1565ADDE6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

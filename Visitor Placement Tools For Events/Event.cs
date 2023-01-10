@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,13 +22,29 @@ namespace Visitor_Placement_Tools_For_Events
             Groups = new List<Group>();
         }
 
+        public List<Visitor> NotTooLate(List<Visitor> visitors)
+        {
+            int CurrentVisitors = 0;
+            List<Visitor> VisitorsOnTime = new List<Visitor>();
+            foreach( Visitor visitor in visitors.OrderByDescending(i => i.DateSignedUp))
+            {
+                if (visitor.DateSignedUp < StartDate && CurrentVisitors < MaxVisitors)
+                {
+                    VisitorsOnTime.Add(visitor);
+                    CurrentVisitors++;
+                }
+            }
+            return VisitorsOnTime;
+        }
+          
+
         public void PlacePeople()
         {
             foreach(Group group in Groups)
             {
                 if(group.HasChildInGroup() == true)
-                {
-                    PlaceGroupsWithChildren(group.Visitors);
+                {                 
+                        PlaceGroup(group.Visitors, group.Visitors.Count);
                 }
                 else
                 {
@@ -36,32 +53,17 @@ namespace Visitor_Placement_Tools_For_Events
             }
         }
 
-        public void PlaceGroupsWithChildren(List<Visitor> visitors)
+        public void PlaceGroup(List<Visitor> visitors, int groupSize)
         {
-            foreach( Visitor visitor in visitors)
+            foreach(Section section in Sections)
             {
-
-                foreach (var item in Sections)
+                if (section.IsSpace(visitors.Count))
                 {
-                    foreach (var item1 in item.Rows)
-                    {
-                        foreach (var item2 in item1.Seats)
-                        { 
-                            if (item2.SeatedVisitor == null)
-                            {
-                                item2.PlaceVisitor(visitor);
-                                break;
-                            }
-
-                        }
-                        break;
-                    }
+                   section.SeatVisitorInRowSeat(visitors);
                     break;
                 }
             }
-           
         }
-
 
         public void AddSections(Section section)
         {
