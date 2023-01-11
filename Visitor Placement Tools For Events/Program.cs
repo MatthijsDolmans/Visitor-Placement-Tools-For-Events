@@ -7,14 +7,28 @@ int maxcap = 12;
 #region Setup
 Random r = new Random();
 Event event1 = new Event(DateTime.Now, maxcap);
-Section section = new Section(SectionLetterEnum.SectionLetter.A, 2);
-Section section1 = new Section(SectionLetterEnum.SectionLetter.B, 2);
+Section section = new Section(SectionLetterEnum.SectionLetter.A, 3);
+Section section1 = new Section(SectionLetterEnum.SectionLetter.B, 3);
 event1.AddSections(section);
 event1.AddSections(section1);
 
 List<Visitor> SignedUp = new();
 
 SignedUp.Add(new Visitor(new DateTime(2014,1,10), "brimstone", event1)); //kind
+SignedUp.Add(new Visitor(new DateTime(r.Next(2014, 2022), r.Next(1, 12), r.Next(1, 29)), "AAAAA", event1));
+SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "BBBBB", event1));
+SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "CCCCC", event1));
+SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "DDDDD", event1));
+SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "EEEEE", event1));
+//SignedUp.Add(new Visitor(new DateTime(2014, 1, 10), "neon", event1));
+SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "FFFFF", event1));
+SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "GGGGG", event1));
+SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "HHHHH", event1));
+SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "IIIII", event1));
+SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "JJJJJ", event1));
+SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "KKKKK", event1)); 
+
+/* SignedUp.Add(new Visitor(new DateTime(2014,1,10), "brimstone", event1)); //kind
 SignedUp.Add(new Visitor(new DateTime(r.Next(2014, 2022), r.Next(1, 12), r.Next(1, 29)), "viper", event1));
 SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "kayo", event1));
 SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "omen", event1));
@@ -30,7 +44,7 @@ SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(
 SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "fade", event1));
 SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "breach", event1));
 SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "cypher", event1));
-SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "harbor", event1));
+SignedUp.Add(new Visitor(new DateTime(r.Next(1900, 2022), r.Next(1, 12), r.Next(1, 29)), "harbor", event1)); */
 
 List<Visitor> AllowedVisitors = event1.NotTooLate(SignedUp);
 
@@ -44,7 +58,7 @@ event1.Groups.Add(group3);
 
 #endregion
 
-event1.PlacePeople();
+event1.PlaceAllVisitors();
 
     foreach (var item1 in event1.Sections)
     {
@@ -55,7 +69,7 @@ event1.PlacePeople();
                 Console.WriteLine("Place: " + item3.SeatName);
                 if (item3.SeatedVisitor != null)
                 {
-                    Console.WriteLine(item3.SeatedVisitor.Name + "Date of birth: " + item3.SeatedVisitor.DateOfBirth);
+                    Console.WriteLine(item3.SeatedVisitor.VisitorId + " ------ Date of birth: " + item3.SeatedVisitor.DateOfBirth);
                 }
             }
         }

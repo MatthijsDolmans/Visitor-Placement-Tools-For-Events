@@ -9,12 +9,11 @@ namespace Visitor_Placement_Tools_For_Events
 {
     public class Row
     {
+        public static int seats;
         public int Number { get; private set; }
         public List<Seat> Seats { get; private set; }
-
-        public static int seats;
-
         public SectionLetterEnum.SectionLetter SectionLetter { get; private set; }
+
         public Row(int number, SectionLetterEnum.SectionLetter sectionletter)
         {
             SectionLetter = sectionletter;
@@ -27,7 +26,8 @@ namespace Visitor_Placement_Tools_For_Events
             }
             GenerateSeats(seats);
         }
-        public List<Seat> GenerateSeats(int amount)
+
+        private List<Seat> GenerateSeats(int amount)
         {
             // 3 --> amount ; is omdat we 3 seats willen atm
             for (int i = 1; i <= 3; i++)
@@ -43,15 +43,21 @@ namespace Visitor_Placement_Tools_For_Events
             int seatsFree = 0;
             foreach(Seat seat in Seats)
             {
-                if(seat.SeatedVisitor == null)
-                {
-                    seatsFree++;
-                }
+                if(seat.SeatedVisitor == null) seatsFree++;
             }
             return seatsFree;
         }
 
-        public bool placeVisitor(Visitor visitor)
+        public int FrontRowSeatsLeft()
+        {
+            if (Number == 1)
+            {
+                return TotalSeatsFree();
+            }
+            return 0;
+        }
+
+        public bool PlaceVisitorOnSeat(Visitor visitor)
         {
             foreach (Seat seat in Seats)
             {

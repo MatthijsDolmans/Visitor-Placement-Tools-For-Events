@@ -24,6 +24,7 @@ namespace Visitor_Placement_Tools_For_Events
             VisitorId = NextId();
             Ischild = IsChild(_event.StartDate);
         }
+
         public int NextId()
         {
             LastVisitorId++;

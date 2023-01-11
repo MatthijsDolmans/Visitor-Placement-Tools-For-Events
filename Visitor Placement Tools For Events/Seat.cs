@@ -12,11 +12,13 @@ namespace Visitor_Placement_Tools_For_Events
         public int Number { get; private set; }
         public string SeatName { get; private set; }
         public Visitor SeatedVisitor { get; private set; }
+
         public Seat(int number, SectionLetterEnum.SectionLetter sectionLetter, int row)
         {
             Number = number;
             SeatName = sectionLetter + "-" + row + "-" + Number;
         }
+
         public void PlaceVisitor(Visitor visitor)
         {
             SeatedVisitor = visitor;

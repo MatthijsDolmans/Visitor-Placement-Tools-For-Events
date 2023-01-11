@@ -12,6 +12,7 @@ namespace Visitor_Placement_Tools_For_Events
         public SectionLetter Name { get; private set; }
         public List<Row> Rows { get; private set; }
         public int MaxRows { get; private set; }
+
         public Section(SectionLetter name, int Maxrows)
         {
             Name = name;
@@ -29,30 +30,27 @@ namespace Visitor_Placement_Tools_For_Events
             return Rows;
         }
 
-        public void SeatVisitorInRowSeat(List<Visitor> visitors)
+        public bool SeatVisitorInRow(Visitor visitor)
         {
-            foreach(Visitor visitor in visitors)
+            foreach (Row row in Rows)
             {
-                foreach (Row row in Rows)
-                {
-                    bool test = row.placeVisitor(visitor);
-                    if (test)
-                    {
-                        break;                      
-                    }
-                }
+                bool Placed = row.PlaceVisitorOnSeat(visitor);
+                if (Placed) return true;                     
             }
+            return false;           
         }
 
-        public bool IsSpace(int groupSize)
+        public bool IsEnoughSeatsForGroupWithChildren(int groupSize, int children)
         {
             int freeSeats = 0;
+            int freeFrontSeats = 0;
             foreach(Row row in Rows)
             {
+                freeFrontSeats += row.FrontRowSeatsLeft();
                 freeSeats += row.TotalSeatsFree(); 
             }
 
-            if (freeSeats >= groupSize) return true;
+            if (freeSeats >= groupSize && freeFrontSeats >= children) return true;
             else return false;
         }
     }

@@ -31,6 +31,17 @@ namespace Visitor_Placement_Tools_For_Events
             }
             return false;
         }
+
+        public int GetAmountOfChildren()
+        {
+            int children = 0;
+            foreach (Visitor vistor in Visitors)
+            {
+                if (vistor.Ischild) children++;
+            }
+            return children;
+        }
+
         public void AddPeopleToGroup(Visitor visitor)
         {
             Visitors.Add(visitor);

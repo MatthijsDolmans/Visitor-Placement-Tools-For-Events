@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +15,7 @@ namespace Visitor_Placement_Tools_For_Events
         public List<Section> Sections { get; private set; }
         public List<Group> Groups { get; private set; }
 
+        #region SetUp
         public Event(DateTime startDate, int maxVisitors)
         {
             StartDate = startDate;
@@ -37,37 +39,62 @@ namespace Visitor_Placement_Tools_For_Events
             return VisitorsOnTime;
         }
           
-
-        public void PlacePeople()
+        public void AddSections(Section section)
         {
+            Sections.Add(section);
+        }
+        #endregion
+
+        public void PlaceAllVisitors()
+        {
+            List<Group> Adults = new();
             foreach(Group group in Groups)
             {
                 if(group.HasChildInGroup() == true)
                 {                 
-                        PlaceGroup(group.Visitors, group.Visitors.Count);
+                    PlaceGroupWithChildren(group);
                 }
                 else
                 {
-
+                    Adults.Add(group);
                 }
+            }
+
+            foreach(Group group in Adults)
+            {
+                PlaceGroupsWithoutChildren(group);
             }
         }
 
-        public void PlaceGroup(List<Visitor> visitors, int groupSize)
+        private void PlaceGroupWithChildren(Group group)
         {
             foreach(Section section in Sections)
             {
-                if (section.IsSpace(visitors.Count))
+                if (section.IsEnoughSeatsForGroupWithChildren(group.Visitors.Count, group.GetAmountOfChildren()))
                 {
-                   section.SeatVisitorInRowSeat(visitors);
+                    foreach (Visitor visitor in group.Visitors.OrderByDescending(i => i.DateOfBirth))
+                    {
+                        section.SeatVisitorInRow(visitor);
+                    }
                     break;
                 }
             }
         }
 
-        public void AddSections(Section section)
+        private void PlaceGroupsWithoutChildren(Group group)
         {
-            Sections.Add(section);
+            foreach (Visitor visitor in group.Visitors)
+            {
+                foreach (Section section in Sections)
+                {
+                    bool placed = section.SeatVisitorInRow(visitor);
+                    if(placed)
+                    {
+                        break;
+                    }                  
+                }
+            }
         }
+
     }
 }
