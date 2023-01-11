@@ -6,7 +6,9 @@ int maxcap = 12;
 
 #region Setup
 Random r = new Random();
+
 Event event1 = new Event(DateTime.Now, maxcap);
+
 Section section = new Section(SectionLetterEnum.SectionLetter.A, 3);
 Section section1 = new Section(SectionLetterEnum.SectionLetter.B, 3);
 event1.AddSections(section);
@@ -59,6 +61,7 @@ event1.Groups.Add(group3);
 #endregion
 
 event1.PlaceAllVisitors();
+//event1.ToString();
 
     foreach (var item1 in event1.Sections)
     {

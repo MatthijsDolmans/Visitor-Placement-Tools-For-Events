@@ -43,10 +43,10 @@ namespace Visitor_Placement_Tools_For_Events
         public bool IsEnoughSeatsForGroupWithChildren(int groupSize, int children)
         {
             int freeSeats = 0;
-            int freeFrontSeats = 0;
+            int freeFrontSeats = Rows[0].FrontRowSeatsLeft();
+
             foreach(Row row in Rows)
             {
-                freeFrontSeats += row.FrontRowSeatsLeft();
                 freeSeats += row.TotalSeatsFree(); 
             }
 
