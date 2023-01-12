@@ -88,13 +88,12 @@ namespace Visitor_Placement_Tools_For_Events
                 foreach (Section section in Sections)
                 {
                     bool placed = section.SeatVisitorInRow(visitor);
-                    if(placed)
+                    if (placed)
                     {
                         break;
-                    }                  
+                    }
                 }
             }
         }
-
     }
 }
