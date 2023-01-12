@@ -46,5 +46,9 @@ namespace Visitor_Placement_Tools_For_Events
         {
             Visitors.Add(visitor);
         }
+        public void RemoveAdultFromGroup(Visitor visitor)
+        {
+            Visitors.Remove(visitor);
+        }
     }
 }

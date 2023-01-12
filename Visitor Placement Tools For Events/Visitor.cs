@@ -19,7 +19,8 @@ namespace Visitor_Placement_Tools_For_Events
         public Visitor(DateTime dateOfBirth, string name, Event _event)
         {
             DateOfBirth = dateOfBirth;
-            DateSignedUp = RandomSignUpDate();
+            DateSignedUp = new DateTime(2020, 1, 10);
+            //DateSignedUp = RandomSignUpDate();
             Name = name;
             VisitorId = NextId();
             Ischild = IsChild(_event.StartDate);

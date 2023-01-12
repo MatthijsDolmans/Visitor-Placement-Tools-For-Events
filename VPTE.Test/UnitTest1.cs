@@ -37,5 +37,11 @@ namespace VPTE.Test
             
             // Matthijs zou de //ACT in de // ASSERT gooien. 
         }
+
+        [Fact]
+        public void When_ListIsSorted_NoDoublicates()
+        {
+
+        }
     }
 }
