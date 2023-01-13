@@ -21,24 +21,6 @@ namespace VPTE.Test
         }
 
         [Fact]
-        public void When_SectionHasEnoughSeats_ReturnTrue()
-        {
-            // Only works if randomize seats per row is off. 
-
-            // Arrange
-            Section section = new(SectionLetterEnum.SectionLetter.A, 3);
-            int groupSize = 8;
-
-            // Act
-            bool answer = section.IsSpace(groupSize);
-
-            // Assert
-            Assert.True(answer);
-            
-            // Matthijs zou de //ACT in de // ASSERT gooien. 
-        }
-
-        [Fact]
         public void When_ListIsSorted_NoDoublicates()
         {
 
