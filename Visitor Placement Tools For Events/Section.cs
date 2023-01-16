@@ -20,7 +20,8 @@ namespace Visitor_Placement_Tools_For_Events
             MaxRows = Maxrows;
             GenerateRows();
         }
-        public List<Row> GenerateRows()
+
+        private List<Row> GenerateRows()
         {
             for (int i = 1; i <= MaxRows; i++)
             {

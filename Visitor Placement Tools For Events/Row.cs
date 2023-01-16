@@ -15,6 +15,7 @@ namespace Visitor_Placement_Tools_For_Events
 
         public Row(int number, SectionLetterEnum.SectionLetter sectionletter)
         {
+            Number = number;
             SectionLetter = sectionletter;
             Seats = new List<Seat>();
             GenerateSeats();

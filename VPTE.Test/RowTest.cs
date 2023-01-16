@@ -17,9 +17,10 @@ public class RowTest
         Row row = new(1, SectionLetterEnum.SectionLetter.A);
 
         // Act
+        int TotalRowSeats = row.Seats.Count;
 
         // Assert
-        Assert.Equal(3, row.Seats.Count);
+        Assert.Equal(3, TotalRowSeats);
     }
 
     [Fact]
@@ -56,5 +57,19 @@ public class RowTest
 
         // Assert
         Assert.Equal(2, FreeSeatsLeft);
+    }
+
+    [Fact]
+    public void When_CheckingForFrontRowSeats_OnlyRowOneHasFrontRowSeats()
+    {
+        Row row1 = new(1, SectionLetterEnum.SectionLetter.A);
+        Row row2 = new(2, SectionLetterEnum.SectionLetter.A);
+        Row row3 = new(3, SectionLetterEnum.SectionLetter.A);
+
+        int FreeFrontSeatsRow1 = row1.FrontRowSeatsLeft();
+        int FreeFrontSeatsRow2 = row2.FrontRowSeatsLeft();
+
+        Assert.NotEqual(FreeFrontSeatsRow1, FreeFrontSeatsRow2);
+        Assert.Equal(3, FreeFrontSeatsRow1);
     }
 }
