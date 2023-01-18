@@ -71,18 +71,18 @@ event1.Groups.Add(group3);
 event1.PlaceAllVisitors();
 //event1.ToString();
 
-foreach (var item1 in event1.Sections)
+foreach (Section sections in event1.Sections)
 {
-    foreach (var item2 in item1.Rows)
+    foreach (Row row in sections.Rows)
     {
-        foreach (var item3 in item2.Seats)
+        foreach (Seat seat in row.Seats)
         {
 
-            if (item3.SeatedVisitor != null)
+            if (seat.SeatedVisitor != null)
             {
-                Console.WriteLine("Place: " + item3.SeatName +  " ------ " + item3.SeatedVisitor.Name +  " -- " + item3.SeatedVisitor.VisitorId +  " -- " + " ------ Date of birth: " + item3.SeatedVisitor.DateOfBirth);
+                Console.WriteLine("Place: " + seat.SeatName +  " ------ " + seat.SeatedVisitor.Name +  " -- " + seat.SeatedVisitor.VisitorId +  " -- " + " ------ Date of birth: " + seat.SeatedVisitor.DateOfBirth);
             }
-            else { Console.WriteLine("Place: " + item3.SeatName); }
+            else { Console.WriteLine("Place: " + seat.SeatName); }
         }
     }
 }
