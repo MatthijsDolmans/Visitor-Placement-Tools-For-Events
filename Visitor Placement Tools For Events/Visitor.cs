@@ -26,13 +26,13 @@ namespace Visitor_Placement_Tools_For_Events
             Ischild = IsChild(_event.StartDate);
         }
 
-        public int NextId()
+        private int NextId()
         {
             LastVisitorId++;
             return LastVisitorId;
         }
         
-        public bool IsChild(DateTime eventDate)
+        private bool IsChild(DateTime eventDate)
         {
             if (DateOfBirth > eventDate.Date.AddYears(-12))
             {

@@ -24,15 +24,24 @@ public class SectionTest
     }
 
     [Fact]
-    public void When_GroupIsPlacedInSection_()
+    public void When_GroupIsPlacedInSection_SeatsAreFilled()
     {
         // Arrange
-        
+        Event event1 = new Event(new DateTime(2022, 1, 10), 10);
+        Section section = new(SectionLetterEnum.SectionLetter.A, 1);
+
+        Visitor visitor = new(new DateTime(2001, 1, 10), "Adult1", event1);
+
 
         // Act
-
+        section.SeatVisitorInRow(visitor);
 
         // Assert
+        Assert.All(section.Rows, r => Assert.Collection(r.Seats, 
+            s => Assert.Equal(visitor, s.SeatedVisitor),
+            s => Assert.Null(s.SeatedVisitor),
+            s => Assert.Null(s.SeatedVisitor)));
+
     }
 
     [Fact]
@@ -58,6 +67,5 @@ public class SectionTest
 
         // Assert
         Assert.True(EnoughSeatsForGroup);
-
     }
 }
